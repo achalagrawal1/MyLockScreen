@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/settingspage_background"
+    tools:context=".SettingsActivity"
+    android:id="@+id/settings_layout"
+    android:orientation="vertical">
+    <!-- Full Page -->
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/settingspage_background"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- First white box -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:background="@color/white"
+            android:id="@+id/box1">
+
+
+            <!-- Left Arrow -->
+
+            <ImageView
+                android:id="@+id/setting_arrow"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="35dp"
+                android:src="@drawable/setting_arrow"
+                android:layout_alignParentStart="true"/>
+
+
+            <!-- Center Text -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Settings"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"/>
+
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:background="@color/white"
+            android:layout_below="@id/box1"
+            android:id="@+id/box2"
+            android:layout_marginTop="16dp">
+
+            <!-- Main Text -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time &amp; Date"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="12dp"/>
+
+            <!-- Small Grey Text -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show time &amp; date"
+                android:textSize="14sp"
+                android:textColor="#888888"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="50dp"/>
+
+
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/switchbtn"
+                android:checked="false"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="15dp"
+                android:layout_centerVertical="true"
+                app:trackTint="@color/switch_track"
+                app:thumbTint="@color/switch_thumb"/>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:id="@+id/box3"
+            android:layout_below="@id/box2"
+            android:layout_marginTop="16dp"
+            android:background="@color/white">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="Task Interface Theme"
+                android:textColor="@color/black"
+                android:id="@+id/theme_text"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginTop="12dp"/>
+
+            <LinearLayout
+                android:id="@+id/theme_selector"
+                android:layout_width="240dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:layout_below="@id/theme_text"
+                android:orientation="horizontal">
+
+                <!-- Light -->
+
+                <TextView
+                    android:id="@+id/light_btn"
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/Main_blue"
+                    android:gravity="center"
+                    android:text="Light"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <!-- Dark -->
+
+                <TextView
+                    android:id="@+id/dark_btn"
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:background="#E0E0E0"
+                    android:gravity="center"
+                    android:text="Dark"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:id="@+id/box4"
+            android:layout_below="@id/box3"
+            android:layout_marginTop="16dp"
+            android:background="@color/white">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:id="@+id/set_font_box1">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text1"
+                    android:text="Font Size"
+                    android:textStyle="bold"
+                    android:textSize="22sp"
+                    android:textColor="@color/black"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="15dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/Circle_bg_Color"
+                    android:layout_alignParentBottom="true"/>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:id="@+id/set_font_box2"
+                android:layout_below="@+id/set_font_box1">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text2"
+                    android:text="Default"
+                    android:textSize="22sp"
+                    android:textColor="@color/black"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="15dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/Circle_bg_Color"
+                    android:layout_alignParentBottom="true"/>
+
+
+                <View
+                    android:id="@+id/default_circle"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/circle_selected"/>
+
+            </RelativeLayout>
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:id="@+id/set_font_box3"
+                android:layout_below="@+id/set_font_box2">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text3"
+                    android:text="Medium"
+                    android:textSize="22sp"
+                    android:textColor="@color/black"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="15dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/Circle_bg_Color"
+                    android:layout_alignParentBottom="true"/>
+
+
+                <View
+                    android:id="@+id/medium_circle"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/circle_unselected"/>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:id="@+id/set_font_box4"
+                android:layout_below="@+id/set_font_box3">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text4"
+                    android:text="Large"
+                    android:textSize="22sp"
+                    android:textColor="@color/black"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="15dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/Circle_bg_Color"
+                    android:layout_alignParentBottom="true"/>
+
+
+                <View
+                    android:id="@+id/large_circle"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/circle_unselected"/>
+
+            </RelativeLayout>
+
+
+
+
+
+
+        </RelativeLayout>
+
+
+
+
+
+    </RelativeLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
