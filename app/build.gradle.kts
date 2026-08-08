@@ -1,15 +1,13 @@
 plugins {
     alias(libs.plugins.android.application)
     id("com.google.gms.google-services")
+    id("com.google.devtools.ksp")
 }
+
 
 android {
     namespace = "com.example.myapplication"
-    compileSdk {
-        version = release(36) {
-            minorApiLevel = 1
-        }
-    }
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.myapplication"
@@ -35,13 +33,9 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 
-
-
     buildFeatures {
         buildConfig = true
     }
-
-
 }
 
 dependencies {
@@ -52,11 +46,24 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation("androidx.appcompat:appcompat:1.6.1")
 
+    // Room Database
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    ksp("androidx.room:room-compiler:2.6.1")
+
+    // Lifecycle ViewModel & LiveData
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
+
+
+
+
+
+
     implementation(platform("com.google.firebase:firebase-bom:34.13.0"))
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-firestore")
-
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

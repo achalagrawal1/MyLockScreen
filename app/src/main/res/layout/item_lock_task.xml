@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="14dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <!-- Number -->
+
+    <TextView
+        android:id="@+id/taskNumber"
+        android:layout_width="35dp"
+        android:layout_height="wrap_content"
+        android:text="1."
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+    <!-- Task -->
+
+    <TextView
+        android:id="@+id/taskTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Morning Study"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"/>
+
+    <!-- Alarm Time -->
+
+    <TextView
+        android:id="@+id/taskTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="8:00 AM"
+        android:textColor="#AFC7FF"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:visibility="gone"/>
+
+</LinearLayout>
