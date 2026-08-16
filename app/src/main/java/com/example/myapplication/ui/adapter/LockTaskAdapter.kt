@@ -41,13 +41,12 @@ class LockTaskAdapter(
             taskNumber.text = "${position + 1}."
             taskTitle.text = task.title
 
-            // Show reminder time on the right side if set (No fake time when unset)
             if (!task.alarmTime.isNullOrBlank()) {
-                taskTime.text = task.alarmTime
-                taskTime.visibility = View.VISIBLE
+                taskTime.text = "Due at ${task.alarmTime} • Tap to done"
             } else {
-                taskTime.visibility = View.GONE
+                taskTime.text = "Tap to mark as done"
             }
+            taskTime.visibility = View.VISIBLE
 
             itemView.setOnClickListener {
                 onToggleCompletion(task)

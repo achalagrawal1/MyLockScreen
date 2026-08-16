@@ -91,8 +91,8 @@ class LockScreenActivity : AppCompatActivity() {
             adapter.submitList(tasks ?: emptyList())
         }
 
-        val lockImage = findViewById<View>(R.id.lockImage)
-        lockImage?.setOnClickListener {
+        val logoContainer = findViewById<View>(R.id.lock_logo_container)
+        logoContainer?.setOnClickListener {
             unlockPhoneAndDismiss()
         }
     }

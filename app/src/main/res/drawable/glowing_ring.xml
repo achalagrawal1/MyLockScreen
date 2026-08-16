@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Outer Glow Shadow -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#4060A5FA" />
+            <size android:width="36dp" android:height="36dp" />
+        </shape>
+    </item>
+    <!-- Inner Ring -->
+    <item
+        android:bottom="3dp"
+        android:left="3dp"
+        android:right="3dp"
+        android:top="3dp">
+        <shape android:shape="oval">
+            <solid android:color="#00000000" />
+            <stroke
+                android:width="3.5dp"
+                android:color="#93C5FD" />
+            <size android:width="30dp" android:height="30dp" />
+        </shape>
+    </item>
+</layer-list>

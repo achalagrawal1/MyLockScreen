@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Outer subtle shadow ring -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#25000000" />
+            <size android:width="26dp" android:height="26dp" />
+        </shape>
+    </item>
+    <!-- White inner circle -->
+    <item
+        android:bottom="1dp"
+        android:left="0dp"
+        android:right="0dp"
+        android:top="0dp">
+        <shape android:shape="oval">
+            <solid android:color="#FFFFFF" />
+            <size android:width="25dp" android:height="25dp" />
+        </shape>
+    </item>
+</layer-list>

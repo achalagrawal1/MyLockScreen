@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Layer 1: Outermost Smooth Soft Ambient Blue Glow Halo -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="36dp" />
+            <gradient
+                android:type="radial"
+                android:gradientRadius="75dp"
+                android:startColor="#253B82F6"
+                android:centerColor="#0F2563EB"
+                android:endColor="#00000000" />
+        </shape>
+    </item>
+
+    <!-- Layer 2: Medium Soft Ambient Glow Ring -->
+    <item
+        android:left="8dp"
+        android:top="8dp"
+        android:right="8dp"
+        android:bottom="8dp">
+        <shape android:shape="rectangle">
+            <corners android:radius="30dp" />
+            <gradient
+                android:type="radial"
+                android:gradientRadius="55dp"
+                android:startColor="#333B82F6"
+                android:endColor="#00000000" />
+        </shape>
+    </item>
+
+    <!-- Layer 3: Glass / Neumorphic Outer Stroke Accent -->
+    <item
+        android:left="14dp"
+        android:top="14dp"
+        android:right="14dp"
+        android:bottom="14dp">
+        <shape android:shape="rectangle">
+            <corners android:radius="26dp" />
+            <solid android:color="#00000000" />
+            <stroke
+                android:width="1.5dp"
+                android:color="#4060A5FA" />
+        </shape>
+    </item>
+
+    <!-- Layer 4: Floating Glass Container with White Inner Highlight Ring -->
+    <item
+        android:left="16dp"
+        android:top="16dp"
+        android:right="16dp"
+        android:bottom="16dp">
+        <shape android:shape="rectangle">
+            <corners android:radius="24dp" />
+            <gradient
+                android:angle="270"
+                android:startColor="#1E65FF"
+                android:endColor="#0052FF" />
+            <stroke
+                android:width="1.5dp"
+                android:color="#80FFFFFF" />
+        </shape>
+    </item>
+</layer-list>

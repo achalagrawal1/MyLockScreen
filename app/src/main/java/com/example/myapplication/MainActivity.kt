@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -28,6 +29,7 @@ import com.example.myapplication.service.AlarmScheduler
 import com.example.myapplication.ui.adapter.TaskAdapter
 import com.example.myapplication.ui.viewmodel.TaskViewModel
 import com.example.myapplication.ui.viewmodel.TaskViewModelFactory
+import com.example.myapplication.utils.ProfileImageHelper
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 
@@ -36,6 +38,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: TaskViewModel
     private lateinit var todayAdapter: TaskAdapter
     private lateinit var plannerCard: View
+    private lateinit var profileCircleHeader: ImageView
+    private lateinit var navigationView: NavigationView
     private var isPreviousDayView: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,14 +59,20 @@ class MainActivity : AppCompatActivity() {
 
         // UI Components from existing XML
         plannerCard = findViewById(R.id.plannerCard)
+        profileCircleHeader = findViewById(R.id.profile_circle)
         val recyclerView = findViewById<RecyclerView>(R.id.todayTasksRecyclerView)
         val doneBtn = findViewById<Button>(R.id.doneBtn)
         val addBtn = findViewById<ImageButton>(R.id.addBtn)
         val dotIndicator = findViewById<LinearLayout>(R.id.dotIndicator)
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
         val menuIcon = findViewById<LinearLayout>(R.id.menu_icon)
-        val navigationView = findViewById<NavigationView>(R.id.navigation_view)
+        navigationView = findViewById(R.id.navigation_view)
         val todayHeader = findViewById<TextView>(R.id.todayHeader)
+
+        // Make top profile circle clickable -> opens ProfileActivity
+        profileCircleHeader.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
 
         // Populate Navigation Drawer Header User Name from Firebase Auth
         val headerView = navigationView.getHeaderView(0)
@@ -70,6 +80,9 @@ class MainActivity : AppCompatActivity() {
         val currentUser = FirebaseAuth.getInstance().currentUser
         val displayName = currentUser?.displayName ?: currentUser?.email?.substringBefore('@') ?: "User"
         profileNameView?.text = displayName
+
+        // Sync Profile Images
+        syncProfileImages()
 
         // Setup Task Adapter using existing item_task.xml views
         todayAdapter = TaskAdapter(
@@ -86,11 +99,6 @@ class MainActivity : AppCompatActivity() {
                         AlarmScheduler.scheduleAlarm(this, updated)
                     }
                 } else {
-                    val newTask = Task(
-                        title = title,
-                        slotIndex = slotIndex,
-                        dateMillis = System.currentTimeMillis()
-                    )
                     viewModel.addTask(title = title, slotIndex = slotIndex)
                 }
             },
@@ -110,7 +118,12 @@ class MainActivity : AppCompatActivity() {
                 todayAdapter.notifyDataSetChanged()
             },
             onEditStarted = {
-                plannerCard.animate().translationY(-50f).setDuration(200).start()
+                plannerCard.animate().translationY(-60f).setDuration(250).start()
+                if (doneBtn.visibility != View.VISIBLE) {
+                    doneBtn.alpha = 0f
+                    doneBtn.visibility = View.VISIBLE
+                    doneBtn.animate().alpha(1f).setDuration(250).start()
+                }
             }
         )
 
@@ -139,7 +152,13 @@ class MainActivity : AppCompatActivity() {
                 todayAdapter.updateTasks(viewModel.todayTasks.value ?: emptyList())
             }
             plannerCard.animate().translationY(-60f).setDuration(250).start()
-            todayAdapter.inlineEditingSlotIndex = 0
+            if (doneBtn.visibility != View.VISIBLE) {
+                doneBtn.alpha = 0f
+                doneBtn.visibility = View.VISIBLE
+                doneBtn.animate().alpha(1f).setDuration(250).start()
+            }
+            val currentCount = viewModel.todayTasks.value?.size ?: 0
+            todayAdapter.inlineEditingSlotIndex = currentCount
             todayAdapter.notifyDataSetChanged()
         }
 
@@ -148,6 +167,10 @@ class MainActivity : AppCompatActivity() {
             todayAdapter.inlineEditingSlotIndex = -1
             todayAdapter.notifyDataSetChanged()
             plannerCard.animate().translationY(0f).setDuration(250).start()
+
+            doneBtn.animate().alpha(0f).setDuration(200).withEndAction {
+                doneBtn.visibility = View.GONE
+            }.start()
 
             // Schedule alarms for all today's tasks with set reminder times
             val currentTasks = viewModel.todayTasks.value ?: emptyList()
@@ -186,6 +209,20 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Navigation Drawer Item Selection
+        headerView?.findViewById<View>(R.id.drawer_item_settings)?.setOnClickListener {
+            drawerLayout.closeDrawer(GravityCompat.START)
+            startActivity(Intent(this, SettingsActivity::class.java))
+        }
+        headerView?.findViewById<View>(R.id.drawer_item_logout)?.setOnClickListener {
+            drawerLayout.closeDrawer(GravityCompat.START)
+            FirebaseAuth.getInstance().signOut()
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
+        headerView?.findViewById<View>(R.id.drawer_item_home)?.setOnClickListener {
+            drawerLayout.closeDrawer(GravityCompat.START)
+        }
+
         navigationView.setNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_settings -> {
@@ -199,6 +236,24 @@ class MainActivity : AppCompatActivity() {
             }
             drawerLayout.closeDrawer(GravityCompat.START)
             true
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        syncProfileImages()
+    }
+
+    private fun syncProfileImages() {
+        if (::profileCircleHeader.isInitialized) {
+            ProfileImageHelper.loadProfileImage(this, profileCircleHeader)
+        }
+        if (::navigationView.isInitialized) {
+            val headerView = navigationView.getHeaderView(0)
+            val drawerProfileImg = headerView?.findViewById<ImageView>(R.id.profile_img)
+            drawerProfileImg?.let {
+                ProfileImageHelper.loadProfileImage(this, it)
+            }
         }
     }
 
@@ -232,5 +287,3 @@ class MainActivity : AppCompatActivity() {
         private const val TAG = "MainActivity"
     }
 }
-
-

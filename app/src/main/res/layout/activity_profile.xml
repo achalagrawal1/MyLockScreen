@@ -1,190 +1,581 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".ProfileActivity"
-    >
+    android:fillViewport="true"
+    android:background="#F6F5F2">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="221dp"
-        android:background="#0064e0"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:id="@+id/box1">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="32dp"
+        android:background="#F6F5F2"
+        tools:context=".ProfileActivity">
 
+        <!-- Top Header Bar -->
+        <RelativeLayout
+            android:id="@+id/box1"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/transparent">
 
+            <!-- Left Back Arrow -->
+            <ImageView
+                android:id="@+id/profile_arrow"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/setting_arrow"
+                android:contentDescription="Back"
+                app:tint="#1E1E2C" />
+
+        </RelativeLayout>
+
+        <!-- Profile Avatar Section -->
         <ImageView
             android:id="@+id/profile_img"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:layout_centerInParent="true"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/circle_metallic_ring"
             android:src="@drawable/circle_bg"
             android:scaleType="centerCrop"
-            android:background="@drawable/circle_bg"
+            android:padding="2.5dp"
             android:clipToOutline="true" />
 
-
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/profile_name"
-            android:text="Your Name"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:layout_below="@+id/profile_img"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="4dp"/>
-
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="12dp"
+            android:text="agrawalachal56"
+            android:textColor="#1E1E2C"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/profile_note"
-            android:text="Note"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:layout_below="@+id/profile_img"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="2dp"
+            android:text="My Profile"
+            android:textColor="#8E8E93"
+            android:textSize="14sp" />
 
-        <ImageView
-            android:id="@+id/profile_arrow"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_marginStart="15dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="16dp"
-            android:src="@drawable/profile_arrow"
-            android:layout_alignParentStart="true"/>
-
-
-
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="76dp"
-        android:id="@+id/box2"
-        android:background="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/box1">
-
+        <!-- SECTION 1: ACCOUNT & DATA -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/text1"
-            android:text="Edit Profile"
-            android:textSize="25sp"
-            android:textColor="@color/black"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="60dp"/>
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="4dp"
+            android:text="Account &amp; Data"
+            android:textColor="#7C7C89"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.05" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/arrow_box1"
-            android:src="@drawable/profile_box_arrow"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="16dp"/>
-
-
-<!--        <ImageView-->
-<!--            android:id="@+id/profile_icon"-->
-<!--            android:layout_width="50dp"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:src="@drawable/profile_account_icon"-->
-<!--            android:layout_centerVertical="true"-->
-<!--            android:scaleType="centerInside"/>-->
-
-        <View
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_account_data"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/Circle_bg_Color"
-            android:layout_alignParentBottom="true"/>
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="1dp"
+            app:strokeWidth="0dp"
+            app:cardBackgroundColor="#FFFFFF">
 
-    </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
+                <!-- Row 1: Edit Account Information (box2) -->
+                <RelativeLayout
+                    android:id="@+id/box2"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:background="?attr/selectableItemBackground">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="76dp"
-        android:id="@+id/box3"
-        android:background="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/box2">
+                    <ImageView
+                        android:id="@+id/icon_edit"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:src="@android:drawable/ic_menu_edit"
+                        app:tint="#2C3E50"
+                        android:contentDescription="Edit" />
 
+                    <TextView
+                        android:id="@+id/text1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/icon_edit"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="14dp"
+                        android:text="Edit Account Information"
+                        android:textColor="#1E1E2C"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/arrow_box1"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/profile_box_arrow"
+                        app:tint="#8E8E93"
+                        android:contentDescription="Arrow" />
+
+                </RelativeLayout>
+
+                <!-- Divider -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="50dp"
+                    android:background="#EFEFF4" />
+
+                <!-- Row 2: Manage Notification Preferences (box3) -->
+                <RelativeLayout
+                    android:id="@+id/box3"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:background="?attr/selectableItemBackground">
+
+                    <ImageView
+                        android:id="@+id/icon_notifications"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:src="@android:drawable/ic_popup_reminder"
+                        app:tint="#2C3E50"
+                        android:contentDescription="Notifications" />
+
+                    <TextView
+                        android:id="@+id/text2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/icon_notifications"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="14dp"
+                        android:text="Manage Notification Preferences"
+                        android:textColor="#1E1E2C"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/arrow_box2"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/profile_box_arrow"
+                        app:tint="#8E8E93"
+                        android:contentDescription="Arrow" />
+
+                </RelativeLayout>
+
+                <!-- Divider -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="50dp"
+                    android:background="#EFEFF4" />
+
+                <!-- Row 3: Review Completed Tasks (box4) -->
+                <RelativeLayout
+                    android:id="@+id/box4"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:background="?attr/selectableItemBackground">
+
+                    <ImageView
+                        android:id="@+id/icon_tasks"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:src="@android:drawable/checkbox_on_background"
+                        app:tint="#2C3E50"
+                        android:contentDescription="Completed Tasks" />
+
+                    <TextView
+                        android:id="@+id/text3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/icon_tasks"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="14dp"
+                        android:text="Review Completed Tasks"
+                        android:textColor="#1E1E2C"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/arrow_box3"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/profile_box_arrow"
+                        app:tint="#8E8E93"
+                        android:contentDescription="Arrow" />
+
+                </RelativeLayout>
+
+                <!-- Divider -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="50dp"
+                    android:background="#EFEFF4" />
+
+                <!-- Row 4: Connected Services -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:background="?attr/selectableItemBackground">
+
+                    <ImageView
+                        android:id="@+id/icon_connected"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:src="@android:drawable/ic_menu_share"
+                        app:tint="#2C3E50"
+                        android:contentDescription="Connected Services" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/icon_connected"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="14dp"
+                        android:text="Connected Services"
+                        android:textColor="#1E1E2C"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/profile_box_arrow"
+                        app:tint="#8E8E93"
+                        android:contentDescription="Arrow" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- SECTION 2: SECURITY & PRIVACY -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/text2"
-            android:text="Reminder Time"
-            android:textSize="25sp"
-            android:textColor="@color/black"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="60dp"/>
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="4dp"
+            android:text="Security &amp; Privacy"
+            android:textColor="#7C7C89"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.05" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/arrow_box2"
-            android:src="@drawable/profile_box_arrow"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="16dp"/>
-
-        <View
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_security_privacy"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/Circle_bg_Color"
-            android:layout_alignParentBottom="true"/>
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="1dp"
+            app:strokeWidth="0dp"
+            app:cardBackgroundColor="#FFFFFF">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-    </RelativeLayout>
+                <!-- Change Password -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:background="?attr/selectableItemBackground">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="76dp"
-        android:id="@+id/box4"
-        android:background="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/box3">
+                    <ImageView
+                        android:id="@+id/icon_password"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:src="@android:drawable/ic_lock_lock"
+                        app:tint="#2C3E50"
+                        android:contentDescription="Change Password" />
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/icon_password"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="14dp"
+                        android:text="Change Password"
+                        android:textColor="#1E1E2C"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/profile_box_arrow"
+                        app:tint="#8E8E93"
+                        android:contentDescription="Arrow" />
+
+                </RelativeLayout>
+
+                <!-- Divider -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="50dp"
+                    android:background="#EFEFF4" />
+
+                <!-- Two-Factor Authentication -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:background="?attr/selectableItemBackground">
+
+                    <ImageView
+                        android:id="@+id/icon_2fa"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:src="@android:drawable/ic_menu_preferences"
+                        app:tint="#2C3E50"
+                        android:contentDescription="2FA" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/icon_2fa"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="14dp"
+                        android:text="Two-Factor Authentication"
+                        android:textColor="#1E1E2C"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/profile_box_arrow"
+                        app:tint="#8E8E93"
+                        android:contentDescription="Arrow" />
+
+                </RelativeLayout>
+
+                <!-- Divider -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="50dp"
+                    android:background="#EFEFF4" />
+
+                <!-- Login Activity -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:background="?attr/selectableItemBackground">
+
+                    <ImageView
+                        android:id="@+id/icon_login_activity"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:src="@android:drawable/ic_menu_info_details"
+                        app:tint="#2C3E50"
+                        android:contentDescription="Login Activity" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/icon_login_activity"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="14dp"
+                        android:text="Login Activity"
+                        android:textColor="#1E1E2C"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/profile_box_arrow"
+                        app:tint="#8E8E93"
+                        android:contentDescription="Arrow" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- SECTION 3: SUPPORT -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/text3"
-            android:text="Past Task data"
-            android:textSize="25sp"
-            android:textColor="@color/black"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="60dp"/>
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="4dp"
+            android:text="Support"
+            android:textColor="#7C7C89"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.05" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/arrow_box3"
-            android:src="@drawable/profile_box_arrow"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="16dp"/>
-
-        <View
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_support"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/Circle_bg_Color"
-            android:layout_alignParentBottom="true"/>
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="1dp"
+            app:strokeWidth="0dp"
+            app:cardBackgroundColor="#FFFFFF">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-    </RelativeLayout>
+                <!-- Contact Support -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:background="?attr/selectableItemBackground">
 
+                    <ImageView
+                        android:id="@+id/icon_support"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:src="@android:drawable/ic_menu_call"
+                        app:tint="#2C3E50"
+                        android:contentDescription="Contact Support" />
 
-    
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/icon_support"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="14dp"
+                        android:text="Contact Support"
+                        android:textColor="#1E1E2C"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
 
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/profile_box_arrow"
+                        app:tint="#8E8E93"
+                        android:contentDescription="Arrow" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                </RelativeLayout>
+
+                <!-- Divider -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="50dp"
+                    android:background="#EFEFF4" />
+
+                <!-- FAQ & Help Center -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:background="?attr/selectableItemBackground">
+
+                    <ImageView
+                        android:id="@+id/icon_help"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:src="@android:drawable/ic_menu_help"
+                        app:tint="#2C3E50"
+                        android:contentDescription="FAQ" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/icon_help"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="14dp"
+                        android:text="FAQ &amp; Help Center"
+                        android:textColor="#1E1E2C"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/profile_box_arrow"
+                        app:tint="#8E8E93"
+                        android:contentDescription="Arrow" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+</ScrollView>

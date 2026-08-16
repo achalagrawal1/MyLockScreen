@@ -1,39 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <!-- ================= VIEW MODE ================= -->
-
     <RelativeLayout
         android:id="@+id/viewModeContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="44dp"
-        android:paddingStart="12dp"
-        android:paddingTop="6dp"
-        android:paddingEnd="12dp"
-        android:paddingBottom="6dp">
+        android:paddingStart="8dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="8dp"
+        android:paddingBottom="8dp">
 
-        <!-- Slot Number -->
-
+        <!-- Slot Number (1., 2., 3., ...) -->
         <TextView
             android:id="@+id/slotNumber"
-            android:layout_width="28dp"
+            android:layout_width="32dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:text="1."
-            android:textColor="#3F5AA9"
-            android:textSize="16sp"
+            android:textColor="#0D2040"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
-
         <!-- Task Text Area -->
-
         <RelativeLayout
             android:id="@+id/taskTextContainer"
             android:layout_width="match_parent"
@@ -41,8 +35,8 @@
             android:layout_centerVertical="true"
             android:layout_toEndOf="@id/slotNumber"
             android:layout_toStartOf="@id/actionIconsContainer"
-            android:layout_marginStart="6dp"
-            android:layout_marginEnd="6dp">
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp">
 
             <EditText
                 android:id="@+id/taskTitle"
@@ -50,11 +44,11 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_toStartOf="@id/taskTimeText"
-                android:textColor="#1E1E2C"
-                android:textColorHint="#9E9E9E"
+                android:textColor="#1E293B"
+                android:textColorHint="#94A3B8"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:backgroundTint="#3F5AA9"
+                android:backgroundTint="#0D2040"
                 android:singleLine="true"
                 android:maxLines="1"
                 android:ellipsize="end"
@@ -67,51 +61,65 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:text="5:20 AM"
-                android:textColor="#3F5AA9"
+                android:textColor="#0D2040"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:visibility="gone" />
 
         </RelativeLayout>
 
-
-        <!-- Alarm + Menu -->
-
+        <!-- Right Side Category Emoji & Status Indicator Icons -->
         <LinearLayout
             android:id="@+id/actionIconsContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <!-- Smart Category Emoji/Icon (e.g. 📚, </>, 👟, 📖, 💬, 🪷, 🔌) -->
+            <TextView
+                android:id="@+id/taskEmojiIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:gravity="center"
+                android:text="⏰"
+                android:textSize="16sp" />
+
+            <!-- Green Status Dot -->
+            <View
+                android:id="@+id/statusDot"
+                android:layout_width="7dp"
+                android:layout_height="7dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/circle_selected" />
 
             <ImageButton
                 android:id="@+id/alarmBtn"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="Set Reminder Time"
                 android:src="@android:drawable/ic_lock_idle_alarm"
-                app:tint="#9E9E9E" />
+                app:tint="#475569"
+                android:visibility="gone" />
 
             <ImageButton
                 android:id="@+id/menuBtn"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="4dp"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="Task Options Menu"
                 android:src="@drawable/more_vert"
-                app:tint="#6C757D" />
+                app:tint="#64748B"
+                android:visibility="gone" />
 
         </LinearLayout>
 
     </RelativeLayout>
 
-
     <!-- ================= INLINE EDIT MODE ================= -->
-
     <LinearLayout
         android:id="@+id/inlineEditContainer"
         android:layout_width="match_parent"
@@ -128,11 +136,11 @@
 
         <TextView
             android:id="@+id/editSlotNumber"
-            android:layout_width="28dp"
+            android:layout_width="32dp"
             android:layout_height="wrap_content"
             android:text="1."
-            android:textColor="#3F5AA9"
-            android:textSize="16sp"
+            android:textColor="#0D2040"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <EditText
@@ -143,13 +151,13 @@
             android:layout_marginStart="6dp"
             android:layout_marginEnd="6dp"
             android:hint="Type task..."
-            android:imeOptions="actionNext"
+            android:imeOptions="actionDone"
             android:inputType="textCapSentences"
             android:maxLines="1"
             android:ellipsize="end"
-            android:textColor="#1E1E2C"
-            android:textColorHint="#9E9E9E"
-            android:textSize="15sp" />
+            android:textColor="#1E293B"
+            android:textColorHint="#94A3B8"
+            android:textSize="16sp" />
 
         <ImageButton
             android:id="@+id/saveInlineBtn"
@@ -158,7 +166,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Save Task"
             android:src="@android:drawable/checkbox_on_background"
-            app:tint="#3F5AA9" />
+            app:tint="#0D2040" />
 
     </LinearLayout>
 
